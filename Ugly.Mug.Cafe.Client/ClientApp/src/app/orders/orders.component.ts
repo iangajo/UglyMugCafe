@@ -35,7 +35,7 @@ export class OrdersComponent {
 
       if (this.products.length > 0) {
         this.products.forEach((value, index, array) => {
-          
+
           if (value.quantity > 0) {
             this.cart.push(value);
           }
@@ -46,21 +46,26 @@ export class OrdersComponent {
     }, error => console.error(error));
 
     this.orderNumber = selectedItem.orderNumber;
-    
-    
+
+
 
   }
 
   public onCancel(selectedItem: any) {
 
-    this.http.put('http://localhost:63754/api/v1/order/cancel?orderNumber=' + selectedItem.orderNumber, JSON.stringify(null),
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      }).subscribe(result => {
+    if (confirm('Are you want to cancel your orders?')) {
+      this.http.put('http://localhost:63754/api/v1/order/cancel?orderNumber=' + selectedItem.orderNumber, JSON.stringify(null),
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          })
+        }).subscribe(result => {
 
       }, error => console.error(error));
+      
+
+    }
+    
   }
 
   public onSelectUpdate(selectedItem: any) {
@@ -79,29 +84,30 @@ export class OrdersComponent {
 
   public submit() {
 
-    let request: any = {
-      orderNumber: this.orderNumber,
-      customerId: this.customer,
-      products: this.cart
-    };
+    if (confirm('Are you sure you want to update your orders?')) {
+      let request: any = {
+        orderNumber: this.orderNumber,
+        customerId: this.customer,
+        products: this.cart
+      };
 
 
-    this.http.put('http://localhost:63754/api/v1/order/update', JSON.stringify(request),
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      }).subscribe(result => {
+      this.http.put('http://localhost:63754/api/v1/order/update', JSON.stringify(request),
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          })
+        }).subscribe(result => {
 
-      }, error => console.error(error));
-
-    this.cart = [];
-    this.products = null;
+        }, error => console.error(error));
+      this.cart = [];
+      this.products = null;
+    }
   }
 
   public cancelSubmit() {
-      this.cart = [];
-      this.products = null;
+    this.cart = [];
+    this.products = null;
   }
 
   ngOnInit(): void {

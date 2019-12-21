@@ -1,7 +1,9 @@
-Customer Name: <input #customer class="form-control" style="margin:5px; width: 300px;" />
+Customer Name: <input #customer class="form-control" style="margin:5px; width: 200px;" />
 <input type="button" value="Register" (click)="saveCustomerName(customer.value)" style="margin:5px;" class="btn btn-info" />
 
-<h2>Orders</h2>
+<h6>{{ message }}</h6>
+
+<h2>All Orders</h2>
 <table class='table table-striped' *ngIf="orders">
   <thead>
   <tr>

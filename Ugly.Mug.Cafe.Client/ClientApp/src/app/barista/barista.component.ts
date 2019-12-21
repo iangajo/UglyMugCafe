@@ -26,26 +26,32 @@ export class BaristaComponent {
 
   public onProcess(selectedItem: any) {
 
-    this.http.put('http://localhost:63754/api/v1/order/process?orderNumber=' + selectedItem.orderNumber, JSON.stringify(null),
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      }).subscribe(result => {
-      
-    }, error => console.error(error));
+    if (confirm('Are you sure you want to tag this as completed?')) {
+      this.http.put('http://localhost:63754/api/v1/order/process?orderNumber=' + selectedItem.orderNumber, JSON.stringify(null),
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          })
+        }).subscribe(result => {
+
+      }, error => console.error(error));
+    }
   }
 
   public onCancel(selectedItem: any) {
 
-    this.http.put('http://localhost:63754/api/v1/order/cancel?orderNumber=' + selectedItem.orderNumber, JSON.stringify(null),
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      }).subscribe(result => {
+    if (confirm('Are you sure you want to cancel this order?')) {
+      this.http.put('http://localhost:63754/api/v1/order/cancel?orderNumber=' + selectedItem.orderNumber,
+        JSON.stringify(null),
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          })
+        }).subscribe(result => {
 
-    }, error => console.error(error));
+        },
+        error => console.error(error));
+    }
   }
 
   public isDisabled(selectionitem: any) {

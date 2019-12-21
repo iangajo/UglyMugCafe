@@ -7,6 +7,7 @@ import { SignalRService } from '../signalr.service'
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
+  private message: string;
   private orders: IOrder[];
   constructor(private http: HttpClient, private hub: SignalRService) {
     this.http.get<IOrder[]>('http://localhost:63754/api/v1/order/all').subscribe(result => {
@@ -25,6 +26,7 @@ export class HomeComponent {
           this.orders = result;
         }, error => console.error(error));
 
+        this.message = payload;
       }
 
 

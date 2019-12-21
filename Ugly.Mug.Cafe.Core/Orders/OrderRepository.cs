@@ -25,7 +25,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
 
         public async Task<IEnumerable<OrderResponse>> All()
         {
-            var orders = await _dbContext.Orders.AsNoTracking().ToListAsync();
+            var orders = await _dbContext.Orders.AsNoTracking().OrderByDescending(o => o.OrderDate).ToListAsync();
 
             if (!orders.Any()) return new List<OrderResponse>();
 
@@ -43,7 +43,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
 
         public async Task<IEnumerable<OrderResponse>> Get(string customer)
         {
-            var orders = await _dbContext.Orders.Where(o => o.Customer == customer && o.Status == OrderStatus.Processing.ToString()).AsNoTracking().ToListAsync();
+            var orders = await _dbContext.Orders.Where(o => o.Customer == customer && o.Status == OrderStatus.Processing.ToString()).OrderByDescending(o => o.OrderDate).AsNoTracking().ToListAsync();
 
             if (!orders.Any()) return new List<OrderResponse>();
 
@@ -112,7 +112,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             _pushService.Push(new PushServiceRequest()
             {
                 Type = "Add",
-                Payload = "Added Order"
+                Payload = $"{order.Customer}'s order has been added to queue."
             });
 
             return new BaseResponse<bool>()
@@ -124,23 +124,30 @@ namespace Ugly.Mug.Cafe.Core.Orders
 
         public async Task<BaseResponse<bool>> Update(string request, Guid orderNumber)
         {
-            var entity = await _dbContext.Orders.FirstOrDefaultAsync(o => o.OrderNumber == orderNumber);
+            var orders = await _dbContext.Orders.FirstOrDefaultAsync(o => o.OrderNumber == orderNumber);
 
-            if (entity != null)
+            if (orders == null)
             {
-                entity.Request = request;
-
-                _dbContext.Orders.Update(entity);
-            }
+                return new BaseResponse<bool>()
+                {
+                    ErrorMessage = "Unable to process your request.",
+                    Result = false,
+                    StatusCode = ResultType.Error,
+                };
+            };
 
             try
             {
+                orders.Request = request;
+
+                _dbContext.Orders.Update(orders);
+
                 await _dbContext.SaveChangesAsync();
 
                 _pushService.Push(new PushServiceRequest()
                 {
                     Type = "Update",
-                    Payload = "Updated Order"
+                    Payload = $"{orders.Customer}'s order has been updated."
                 });
             }
             catch (Exception)
@@ -171,7 +178,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
                 _pushService.Push(new PushServiceRequest()
                 {
                     Type = "Cancel",
-                    Payload = "Cancelled Order"
+                    Payload = $"{order.Customer}'s, order has been cancelled."
                 });
             }
             catch (Exception)
@@ -183,7 +190,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
                     StatusCode = ResultType.Error
                 };
             }
-             
+
 
             return new BaseResponse<bool>()
             {
@@ -209,7 +216,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
                 _pushService.Push(new PushServiceRequest()
                 {
                     Type = "Processed",
-                    Payload = "Order Processed"
+                    Payload = $"{order.Customer}'s, order has been completed."
                 });
             }
             catch (Exception)
@@ -246,8 +253,8 @@ namespace Ugly.Mug.Cafe.Core.Orders
 
                 _pushService.Push(new PushServiceRequest()
                 {
-                    Type = "Processed",
-                    Payload = "Order Processed"
+                    Type = "Cancel",
+                    Payload = $"{order.Customer}'s, order has been cancelled."
                 });
             }
             catch (Exception)

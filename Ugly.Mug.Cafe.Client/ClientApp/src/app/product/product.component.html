@@ -1,6 +1,8 @@
-Hi {{ customerName }}
+<h1>Welcome! {{ customerName }}</h1>
 
 <p *ngIf="!products"><em>Loading...</em></p>
+
+<h4> cart: {{cartCount}}</h4>
 
 <table class='table table-striped' *ngIf="products">
   <thead>
