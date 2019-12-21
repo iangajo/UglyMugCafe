@@ -1,0 +1,44 @@
+Hi {{ customerName }}
+
+<p *ngIf="!products"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="products">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Quantity</th>
+      <th>Coffee</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td><button type="button" (click)="onSelect(product)" class="btn btn-info">Add</button></td>
+      <td><input type="number" placeholder="0" maxlength="3" [(ngModel)] = "product.quantity" min="0" max="10" digitOnly></td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2 *ngIf="cart">My Orders</h2>
+<table class='table table-striped' *ngIf="cart">
+  <thead>
+  <tr>
+    <th>Quantity</th>
+    <th>Coffee</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of cart">
+      <td>{{ c.quantity }}</td>
+      <td>{{ c.name }}</td>
+      <td>{{ c.description }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<button class="btn btn-primary" *ngIf="products" (click)="submit()" >Submit Orders</button>

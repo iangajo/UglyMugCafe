@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Hub", "SignalRHub\SignalR.Hub.csproj", "{DA892EEC-C0CC-41FA-AF25-405656221831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ugly.Mug.Cafe.Client", "Ugly.Mug.Cafe.Client\Ugly.Mug.Cafe.Client.csproj", "{276CA71C-11F4-45B2-BC65-C877836A1C19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.API", "Ugly.Mug.Cafe.API\Ugly.Mug.Cafe.API.csproj", "{08B62093-7F23-4A28-A06E-BBE4FB4C5582}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.Core", "Ugly.Mug.Cafe.Core\Ugly.Mug.Cafe.Core.csproj", "{47084276-A9E3-4241-B2B8-1CFC2C84A909}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.Data", "Ugly.Mug.Cafe.Data\Ugly.Mug.Cafe.Data.csproj", "{7FEA1EE4-B49B-42CE-9EEF-4F816D57F574}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.Domain", "Ugly.Mug.Cafe.Domain\Ugly.Mug.Cafe.Domain.csproj", "{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA892EEC-C0CC-41FA-AF25-405656221831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA892EEC-C0CC-41FA-AF25-405656221831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA892EEC-C0CC-41FA-AF25-405656221831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA892EEC-C0CC-41FA-AF25-405656221831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{276CA71C-11F4-45B2-BC65-C877836A1C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{276CA71C-11F4-45B2-BC65-C877836A1C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{276CA71C-11F4-45B2-BC65-C877836A1C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{276CA71C-11F4-45B2-BC65-C877836A1C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08B62093-7F23-4A28-A06E-BBE4FB4C5582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08B62093-7F23-4A28-A06E-BBE4FB4C5582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08B62093-7F23-4A28-A06E-BBE4FB4C5582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08B62093-7F23-4A28-A06E-BBE4FB4C5582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47084276-A9E3-4241-B2B8-1CFC2C84A909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47084276-A9E3-4241-B2B8-1CFC2C84A909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47084276-A9E3-4241-B2B8-1CFC2C84A909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47084276-A9E3-4241-B2B8-1CFC2C84A909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FEA1EE4-B49B-42CE-9EEF-4F816D57F574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FEA1EE4-B49B-42CE-9EEF-4F816D57F574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FEA1EE4-B49B-42CE-9EEF-4F816D57F574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FEA1EE4-B49B-42CE-9EEF-4F816D57F574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {730F8227-C588-4688-85CE-8897938DE086}
+	EndGlobalSection
+EndGlobal

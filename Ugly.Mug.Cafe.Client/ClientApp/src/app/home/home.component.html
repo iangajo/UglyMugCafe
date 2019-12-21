@@ -1,0 +1,29 @@
+Customer Name: <input #customer class="form-control" style="margin:5px; width: 300px;" />
+<input type="button" value="Register" (click)="saveCustomerName(customer.value)" style="margin:5px;" class="btn btn-info" />
+
+<h2>Orders</h2>
+<table class='table table-striped' *ngIf="orders">
+  <thead>
+  <tr>
+    <th>Customer</th>
+    <th>OrderNumber</th>
+    <th>OrderDate</th>
+    <th>Orders</th>
+    <th>IsProcessed</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+    <td>{{order.customer}}</td>
+
+    <td>{{ order.orderNumber }}</td>
+    <td>{{ order.orderDate }}</td>
+    <td>
+      <div *ngFor="let c of order.orders">
+        <label>{{ c.quantity }}</label> - <label>{{ c.name }}</label>
+      </div>
+    </td>
+    <td>{{ order.status }}</td>
+  </tr>
+  </tbody>
+</table>

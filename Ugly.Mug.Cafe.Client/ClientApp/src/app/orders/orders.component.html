@@ -1,0 +1,56 @@
+<p *ngIf="!orders"><em>Loading...</em></p>
+
+<h2>{{ message }} </h2>
+
+<table class='table table-striped' *ngIf="orders">
+  <thead>
+    <tr>
+      <th></th>
+      <th>OrderNumber</th>
+      <th>OrderDate</th>
+      <th>Orders</th>
+      <th>IsProcessed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>
+        <button type="button" (click)="onModify(order)" style="margin:5px;" class="btn btn-info">Modify</button>
+        <button type="button" (click)="onCancel(order)" style="margin:5px;" class="btn btn-danger">Cancel</button>
+      </td>
+      
+      <td>{{ order.orderNumber }}</td>
+      <td>{{ order.orderDate }}</td>
+      <td>
+        <div *ngFor="let c of order.orders">
+          <label>{{ c.quantity }}</label> - <label>{{ c.name }}</label>
+        </div>
+      </td>
+      <td>{{ order.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p *ngIf="products"><em>Coffee Products</em></p>
+<table class='table table-striped' *ngIf="products">
+  <thead>
+  <tr>
+    
+    <th>Quantity</th>
+    <th>Coffee</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    
+    <td><input type="number" (click)="onSelectUpdate(product)" placeholder="0" maxlength="10" [(ngModel)]="product.quantity" min="1" max="10" digitOnly></td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary" style="margin:5px;" *ngIf="products" (click)="submit()">Update Orders</button>
+<button class="btn btn-danger" style="margin:5px;" *ngIf="products" (click)="cancelSubmit()">Close</button>

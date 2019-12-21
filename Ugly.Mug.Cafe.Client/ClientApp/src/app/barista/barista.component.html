@@ -1,0 +1,31 @@
+
+  <h3>{{message}}</h3>
+
+<table class='table table-striped' *ngIf="orders">
+  <thead>
+  <tr>
+    <th>Customer</th>
+    <th>OrderNumber</th>
+    <th>OrderDate</th>
+    <th>Orders</th>
+    <th>Complete Order</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+    <td>{{order.customer}}</td>
+
+    <td>{{ order.orderNumber }}</td>
+    <td>{{ order.orderDate }}</td>
+    <td>
+      <div *ngFor="let c of order.orders">
+        <label>{{ c.quantity }}</label> - <label>{{ c.name }}</label>
+      </div>
+    </td>
+    <td>
+      <button type="button" (click)="onProcess(order)" style="margin:5px;" class="btn btn-info" [disabled]="isDisabled(order)">Complete</button>
+      <button type="button" (click)="onCancel(order)" style="margin:5px;" class="btn btn-danger" [disabled]="isDisabled(order)">Cancel</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
