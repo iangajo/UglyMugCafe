@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Hub", "SignalRHub\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ugly.Mug.Cafe.Client", "Ugly.Mug.Cafe.Client\Ugly.Mug.Cafe.Client.csproj", "{276CA71C-11F4-45B2-BC65-C877836A1C19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.API", "Ugly.Mug.Cafe.API\Ugly.Mug.Cafe.API.csproj", "{08B62093-7F23-4A28-A06E-BBE4FB4C5582}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ugly.Mug.Cafe.API", "Ugly.Mug.Cafe.API\Ugly.Mug.Cafe.API.csproj", "{08B62093-7F23-4A28-A06E-BBE4FB4C5582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.Core", "Ugly.Mug.Cafe.Core\Ugly.Mug.Cafe.Core.csproj", "{47084276-A9E3-4241-B2B8-1CFC2C84A909}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ugly.Mug.Cafe.Core", "Ugly.Mug.Cafe.Core\Ugly.Mug.Cafe.Core.csproj", "{47084276-A9E3-4241-B2B8-1CFC2C84A909}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.Data", "Ugly.Mug.Cafe.Data\Ugly.Mug.Cafe.Data.csproj", "{7FEA1EE4-B49B-42CE-9EEF-4F816D57F574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ugly.Mug.Cafe.Data", "Ugly.Mug.Cafe.Data\Ugly.Mug.Cafe.Data.csproj", "{7FEA1EE4-B49B-42CE-9EEF-4F816D57F574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugly.Mug.Cafe.Domain", "Ugly.Mug.Cafe.Domain\Ugly.Mug.Cafe.Domain.csproj", "{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ugly.Mug.Cafe.Domain", "Ugly.Mug.Cafe.Domain\Ugly.Mug.Cafe.Domain.csproj", "{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Ugly.Mug.Cafe.Database", "Ugly.Mug.Cafe.Database\Ugly.Mug.Cafe.Database.sqlproj", "{28C62285-26C3-44AA-9150-BFF1E8265907}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,12 @@ Global
 		{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A09C7E1-8CC1-4396-A9FA-52539E5A0F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C62285-26C3-44AA-9150-BFF1E8265907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C62285-26C3-44AA-9150-BFF1E8265907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C62285-26C3-44AA-9150-BFF1E8265907}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{28C62285-26C3-44AA-9150-BFF1E8265907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C62285-26C3-44AA-9150-BFF1E8265907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C62285-26C3-44AA-9150-BFF1E8265907}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
