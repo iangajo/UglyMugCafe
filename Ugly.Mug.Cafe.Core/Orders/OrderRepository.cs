@@ -118,7 +118,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             return new BaseResponse<bool>()
             {
                 Result = true,
-                StatusCode = ResultType.Success
+                StatusCode = ResultType.Created
             };
         }
 

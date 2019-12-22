@@ -46,7 +46,7 @@ namespace Ugly.Mug.Cafe.API.Controllers
             var orderRequest = Helper.OrderHelper.Transform(request);
             var response = await _orderRepository.Add(orderRequest);
 
-            return Created(string.Empty, response);
+            return StatusCodeReturn(response);
         }
 
 
@@ -57,7 +57,7 @@ namespace Ugly.Mug.Cafe.API.Controllers
 
             var response = await _orderRepository.Update(orderRequest.Request, orderRequest.OrderNumber);
 
-            return Ok(response);
+            return StatusCodeReturn(response);
         }
 
         [HttpPut("v1/order/process")]
@@ -65,7 +65,7 @@ namespace Ugly.Mug.Cafe.API.Controllers
         {
             var response = await _orderRepository.Process(orderNumber);
 
-            return Ok(response);
+            return StatusCodeReturn(response);
         }
 
         [HttpPut("v1/order/cancel")]
@@ -73,7 +73,7 @@ namespace Ugly.Mug.Cafe.API.Controllers
         {
             var response = await _orderRepository.Cancel(orderNumber);
 
-            return Ok(response);
+            return StatusCodeReturn(response);
         }
     }
 }
