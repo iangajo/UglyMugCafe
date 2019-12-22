@@ -24,10 +24,10 @@ namespace Ugly.Mug.Cafe.API.Controllers
         }
 
 
-        [HttpGet("v1/order/{customerId}")]
-        public async Task<IActionResult> GetOrder(string customerId)
+        [HttpGet("v1/order/{customer}")]
+        public async Task<IActionResult> GetOrder(string customer)
         {
-            var response = await _orderRepository.Get(customerId);
+            var response = await _orderRepository.Get(customer);
 
             return Ok(response);
         }

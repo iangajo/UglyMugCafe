@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Ugly.Mug.Cafe.API.Service;
 using Ugly.Mug.Cafe.Core.Orders;
 using Ugly.Mug.Cafe.Core.Products;
 using Ugly.Mug.Cafe.Core.Service;
@@ -30,7 +31,8 @@ namespace Ugly.Mug.Cafe.API
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<PushService>();
-
+            services.AddScoped<ModelValidationServiceFilter>();
+            
             return services;
         }
 
