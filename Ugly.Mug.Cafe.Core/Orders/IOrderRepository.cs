@@ -8,13 +8,13 @@ namespace Ugly.Mug.Cafe.Core.Orders
 {
     public interface IOrderRepository
     {
-        Task<IEnumerable<OrderResponse>> All();
-        Task<IEnumerable<OrderResponse>> Get(string customer);
-        Task<IEnumerable<ProductResponse>> Get(Guid orderNumber);
-        Task<BaseResponse<bool>> Add(Order order);
-        Task<BaseResponse<bool>> Update(string request, Guid orderNumber);
-        Task<BaseResponse<bool>> Cancel(Order order);
-        Task<BaseResponse<bool>> Process(Guid orderNumber);
-        Task<BaseResponse<bool>> Cancel(Guid orderNumber);
+        Task<IEnumerable<OrderResponse>> GetAllOrders();
+        Task<IEnumerable<OrderResponse>> GetOrdersByCustomerName(string customer);
+        Task<IEnumerable<ProductResponse>> GetOrdersByOrderNumber(Guid orderNumber);
+        Task<BaseResponse<bool>> AddOrder(Order order);
+        Task<BaseResponse<bool>> ModifyOrder(string request, Guid orderNumber);
+        Task<BaseResponse<bool>> CancelOrder(Order order);
+        Task<BaseResponse<bool>> ProcessOrder(Guid orderNumber);
+        Task<BaseResponse<bool>> CancelOrderByOrderNumber(Guid orderNumber);
     }
 }

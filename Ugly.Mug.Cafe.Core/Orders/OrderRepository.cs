@@ -23,7 +23,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             _pushService = pushService;
         }
 
-        public async Task<IEnumerable<OrderResponse>> All()
+        public async Task<IEnumerable<OrderResponse>> GetAllOrders()
         {
             var orders = await _dbContext.Orders.AsNoTracking().OrderByDescending(o => o.OrderDate).ToListAsync();
 
@@ -41,7 +41,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             }).ToList();
         }
 
-        public async Task<IEnumerable<OrderResponse>> Get(string customer)
+        public async Task<IEnumerable<OrderResponse>> GetOrdersByCustomerName(string customer)
         {
             var orders = await _dbContext.Orders.Where(o => o.Customer == customer && o.Status == OrderStatus.Processing.ToString()).OrderByDescending(o => o.OrderDate).AsNoTracking().ToListAsync();
 
@@ -59,7 +59,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             }).ToList();
         }
 
-        public async Task<IEnumerable<ProductResponse>> Get(Guid orderNumber)
+        public async Task<IEnumerable<ProductResponse>> GetOrdersByOrderNumber(Guid orderNumber)
         {
             var products = await _dbContext.Products.AsNoTracking().ToListAsync();
 
@@ -91,7 +91,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             }).ToList();
         }
 
-        public async Task<BaseResponse<bool>> Add(Order order)
+        public async Task<BaseResponse<bool>> AddOrder(Order order)
         {
             await _dbContext.AddAsync(order);
 
@@ -122,7 +122,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             };
         }
 
-        public async Task<BaseResponse<bool>> Update(string request, Guid orderNumber)
+        public async Task<BaseResponse<bool>> ModifyOrder(string request, Guid orderNumber)
         {
             var orders = await _dbContext.Orders.FirstOrDefaultAsync(o => o.OrderNumber == orderNumber);
 
@@ -167,7 +167,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             };
         }
 
-        public async Task<BaseResponse<bool>> Cancel(Order order)
+        public async Task<BaseResponse<bool>> CancelOrder(Order order)
         {
             _dbContext.Orders.Remove(order);
 
@@ -199,7 +199,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             };
         }
 
-        public async Task<BaseResponse<bool>> Process(Guid orderNumber)
+        public async Task<BaseResponse<bool>> ProcessOrder(Guid orderNumber)
         {
             var order = await _dbContext.Orders.FirstOrDefaultAsync(o => o.OrderNumber == orderNumber);
 
@@ -237,7 +237,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
             };
         }
 
-        public async Task<BaseResponse<bool>> Cancel(Guid orderNumber)
+        public async Task<BaseResponse<bool>> CancelOrderByOrderNumber(Guid orderNumber)
         {
             var order = await _dbContext.Orders.FirstOrDefaultAsync(o => o.OrderNumber == orderNumber);
 

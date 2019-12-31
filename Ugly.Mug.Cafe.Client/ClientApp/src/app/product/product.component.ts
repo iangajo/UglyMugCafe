@@ -9,7 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class ProductComponent {
-  private cart: any[] = [];
+  private cart: any[] = []; //should be in localStorage
+  private message: string;
   private products: IProduct[];
   private baseResult: IBaseResult;
   private customerName: string;
@@ -39,10 +40,10 @@ export class ProductComponent {
 
     });
 
-
-    this.cart.push(selectedItem);
-    this.cartCount += selectedItem.quantity;
-
+    if (selectedItem.quantity > 0) {
+      this.cart.push(selectedItem);
+      this.cartCount += selectedItem.quantity;
+    }
   }
 
   public submit() {
@@ -61,9 +62,8 @@ export class ProductComponent {
           })
         }).subscribe(result => {
 
-        this.baseResult = result;
         //success
-        if (this.baseResult.statusCode === 200) {
+        if (result.statusCode === 201) {
           this.cart = [];
           this.cartCount = 0;
           this.loadProducts();
