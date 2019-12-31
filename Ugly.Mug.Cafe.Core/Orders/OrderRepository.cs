@@ -134,7 +134,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
                     Result = false,
                     StatusCode = ResultType.Error,
                 };
-            };
+            }
 
             try
             {
@@ -207,7 +207,7 @@ namespace Ugly.Mug.Cafe.Core.Orders
 
             try
             {
-                order.Status = OrderStatus.Completed.ToString();
+                order.Status = OrderStatus.ReadyForPickup.ToString();
 
                 _dbContext.Orders.Update(order);
 
